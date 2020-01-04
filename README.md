@@ -10,6 +10,7 @@ library(dplyr)
 The first step is to download the data. The code below checks to see if "DS3FinalProject.zip" exists, and if it doesn't creates a file with that name and saves the data there. The next block of code unzips the file.
 
 filename <- "DS3FinalProject.zip"
+
 if(!file.exists(filename)){
   fileURL <- "https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip"
   download.file(fileURL, filename, method = "curl")
@@ -23,12 +24,19 @@ if(!file.exists("UCI HAR Dataset")){
 The next step is to read the data into R. The code below reads in the data and assigns some column names at the same time to make the rest of the code easier to understand. The features table lists the variable names of the test and train data frames, so those variable names are passed to test and train as column names using col.names = features$V2. The activityLabels data frame lists each activity the subjects performed (walking, laying, standing, etc) and assigns each a number 1:6, so those columns are named "Activity" and "ActivityCode". The testLabels and trainLabels data frames list the activity codes for each record in the test and train data frames, respectively. The subject_test and subject_train data frames list the ID number for the subject who conducted the activity for each record in the test and train data frames, respectively.
 
 features <- read.table("./DS3FinalProject/UCI HAR Dataset/features.txt")
+
 test <- read.table("./DS3FinalProject/UCI HAR Dataset/test/X_test.txt", col.names = features$V2)
+
 testLabels <- read.table("./DS3FinalProject/UCI HAR Dataset/test/y_test.txt", col.names = "ActivityCode")
+
 train <- read.table("./DS3FinalProject/UCI HAR Dataset/train/X_train.txt", col.names = features$V2)
+
 trainLabels <- read.table("./DS3FinalProject/UCI HAR Dataset/train/y_train.txt", col.names = "ActivityCode")
+
 activityLabels <- read.table("./DS3FinalProject/UCI HAR Dataset/activity_labels.txt", col.names = c("ActivityCode", "Activity"))
+
 subject_test <- read.table("./DS3FinalProject/UCI Har Dataset/test/subject_test.txt", col.names = "subject")
+
 subject_train <- read.table("./DS3FinalProject/UCI Har Dataset/train/subject_train.txt", col.names = "subject")
 
 ### Step 3
