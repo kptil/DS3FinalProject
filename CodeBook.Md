@@ -1,6 +1,6 @@
 # Code Book
 
-
+## Transformations
 ### Step 1
 The first step is to download the data. The code below checks to see if "DS3FinalProject.zip" exists, and if it doesn't creates a file with that name and saves the data there. The next block of code unzips the file.
 
@@ -55,3 +55,5 @@ subset <- group_by(subset, Activity, subject)<br/>
 names <- names(subset)<br/>
 names < names[-c(87:88)]<br/>
 averages <- summarize_at(subset, names, mean)
+
+write.table(averages, "Averages.txt", row.names = FALSE)
