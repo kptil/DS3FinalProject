@@ -24,7 +24,6 @@ if(!file.exists("UCI HAR Dataset")){
 The next step is to read the data into R. The code below reads in the data and assigns some column names at the same time to make the rest of the code easier to understand. The features table lists the variable names of the test and train data frames, so those variable names are passed to test and train as column names using col.names = features$V2. The activityLabels data frame lists each activity the subjects performed (walking, laying, standing, etc) and assigns each a number 1:6, so those columns are named "Activity" and "ActivityCode". The testLabels and trainLabels data frames list the activity codes for each record in the test and train data frames, respectively. The subject_test and subject_train data frames list the ID number for the subject who conducted the activity for each record in the test and train data frames, respectively.
 
 features <- read.table("./DS3FinalProject/UCI HAR Dataset/features.txt")
-
 test <- read.table("./DS3FinalProject/UCI HAR Dataset/test/X_test.txt", col.names = features$V2)
 
 testLabels <- read.table("./DS3FinalProject/UCI HAR Dataset/test/y_test.txt", col.names = "ActivityCode")
