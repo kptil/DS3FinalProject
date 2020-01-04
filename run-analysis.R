@@ -43,3 +43,4 @@ names <- names(subset)
 names < names[-c(87:88)]
 averages <- summarize_at(subset, names, mean)
 
+write.table(averages, "Averages.txt", row.names = FALSE)
